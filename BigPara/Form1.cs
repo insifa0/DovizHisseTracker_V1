@@ -78,7 +78,6 @@ namespace BigPara
                 //HtmlAgilityPack.HtmlDocument document = htmlHisse.Load("https://www.isyatirim.com.tr/tr-tr/analiz/hisse/Sayfalar/sirket-karti.aspx?hisse=BIMAS");
                 HtmlAgilityPack.HtmlDocument document = htmlHisse.Load("https://bigpara.hurriyet.com.tr/borsa/hisse-fiyatlari/bimas-bim-magazalar-detay/genel/gunici/");
 
-                //System.Threading.Thread.Sleep(5000);
                 // XPath ifadelerini kullanarak
                 var hisseFiyatNode = document.DocumentNode.SelectSingleNode(hisseFiyatiXpath).InnerText;
                 MessageBox.Show(hisseFiyatNode);
