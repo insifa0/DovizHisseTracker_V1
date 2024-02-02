@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Web;
 using System.Windows.Forms;
 using HtmlAgilityPack;
+using static System.Net.WebRequestMethods;
 
 namespace BigPara
 {
@@ -64,8 +65,10 @@ namespace BigPara
         //private static string hisseFiyatiXpath = "//div[@class='bottom']//div[2]//span[1]";
         //private static string hisseFiyatiXpath = "(//span[@id='hisse_Son'])[1]";
         //private static string hisseFiyatiXpath = "//span[@id='hisse_Son']"
-        private static string hisseFiyatiXpath = "//span[@class='value']";
-        List <Hisse> hisseler = new List<Hisse>();
+        //private static string hisseFiyatiXpath = "//span[@class='value']"; hürriyet borsa
+        //private static string hisseFiyatiXpath = "//span[@class='inline-flex items-center tabular-nums'][1]"; // fintables
+        private static string hisseFiyatiXpath = "//div[@class='D(ib) Mend(20px)']//fin-streamer[@data-field='regularMarketPrice']";//finance.yahoo 
+        List<Hisse> hisseler = new List<Hisse>();
 
                
 
@@ -76,7 +79,14 @@ namespace BigPara
             {
                 //https://fintables.com/sirketler/KBORU bu siteyi dene hisse almasý daha kolay gibi
                 //HtmlAgilityPack.HtmlDocument document = htmlHisse.Load("https://www.isyatirim.com.tr/tr-tr/analiz/hisse/Sayfalar/sirket-karti.aspx?hisse=BIMAS");
-                HtmlAgilityPack.HtmlDocument document = htmlHisse.Load("https://bigpara.hurriyet.com.tr/borsa/hisse-fiyatlari/bimas-bim-magazalar-detay/genel/gunici/");
+                //HtmlAgilityPack.HtmlDocument document = htmlHisse.Load("https://bigpara.hurriyet.com.tr/borsa/hisse-fiyatlari/bimas-bim-magazalar-detay/genel/gunici/");
+                /*string hisseSiteAdi = "https://fintables.com/sirketler/" + hisseAdi;
+                 MessageBox.Show(hisseSiteAdi);
+                 HtmlAgilityPack.HtmlDocument document = htmlHisse.Load("https://fintables.com/sirketler/BIMAS");
+                */
+                string hisseSiteAdi = "https://finance.yahoo.com/quote/" + hisseAdi +".IS?p=" + hisseAdi +".IS&.tsrc=fin-srch";
+                MessageBox.Show(hisseSiteAdi);
+                HtmlAgilityPack.HtmlDocument document = htmlHisse.Load(hisseSiteAdi);
 
                 // XPath ifadelerini kullanarak
                 var hisseFiyatNode = document.DocumentNode.SelectSingleNode(hisseFiyatiXpath).InnerText;
