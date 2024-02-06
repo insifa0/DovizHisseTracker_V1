@@ -2,7 +2,7 @@
 
 ---
 
-# BigPara - Döviz ve Hisse Fiyatları Takip Uygulaması
+# Doviz Hisse Tracker - Döviz ve Hisse Fiyatları Takip Uygulaması
 
 Bu uygulama, finans verilerini çekmek ve göstermek için HtmlAgilityPack kütüphanesini kullanır. Döviz fiyatlarını anlık olarak almanızı ve belirli bir hissenin güncel fiyatını takip etmenizi sağlar.
 
@@ -31,25 +31,47 @@ Uygulamayı kullanmak için:
 
 ---
 
-# BigPara - Currency and Stock Price Tracking Application
+## Doviz Hisse Tracker
 
-This application uses the HtmlAgilityPack library to fetch and display financial data. It allows you to get real-time currency rates and track the current price of a specific stock.
+Doviz Hisse Tracker is a simple application that allows you to track currency exchange rates and stock prices. The application is developed in C# and utilizes the HtmlAgilityPack library for web scraping.
 
-## How to Use?
+### Features
 
-To use the application:
+- **Currency Exchange Rates:** Get the latest currency exchange rates, including buying and selling prices for major currencies.
 
-1. Click on the "Get Currency" button to get real-time currency rates.
-2. Use the "Get Stock" button to find out the current price of a specific stock.
+- **Stock Prices:** Enter the name of any company on the Istanbul Stock Exchange to retrieve its current share price.
 
-### Requirements
+### Getting Started
 
-- .NET Framework 4.7.2 or above
-- HtmlAgilityPack library installed via NuGet Package Manager
+1. Clone the repository:
 
-### Installation
+    ```bash
+    git clone https://github.com/insifa0/DovizHisseTracker_V1.git
+    cd DovizHisseTracker_V1
+    ```
 
-1. Download the project files to your computer.
-2. Open the project in Visual Studio or a similar development environment.
-3. Install the `HtmlAgilityPack` package using the NuGet Package Manager.
-4. Build and run the project.
+2. Open the solution in Visual Studio or your preferred C# IDE.
+
+3. Build and run the application.
+
+### Usage
+
+#### Currency Exchange Rates
+
+- Click the "Get Currency Rates" button to retrieve the latest exchange rates.
+
+#### Stock Prices
+
+- Enter the name of the company in the provided textbox.
+  
+- Click the "Get Stock Price" button to get the current share price.
+
+### Contributions
+
+Contributions are welcome! Feel free to open issues, submit pull requests, or suggest new features.
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+**Note:** Replace `insifa0` in the repository URL with your GitHub username.
