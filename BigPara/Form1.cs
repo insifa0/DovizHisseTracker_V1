@@ -70,11 +70,10 @@ namespace BigPara
         private static string hisseFiyatiXpath = "//div[@class='D(ib) Mend(20px)']//fin-streamer[@data-field='regularMarketPrice']";//finance.yahoo 
         List<Hisse> hisseler = new List<Hisse>();
 
-               
 
         private void btnHisseGetir_Click(object sender, EventArgs e)
-        {
-            string hisseAdi = textBox2.Text;
+        {   
+            string hisseAdi = textBox2.Text.ToUpper();
             try
             {
                 //https://fintables.com/sirketler/KBORU bu siteyi dene hisse almasý daha kolay gibi
@@ -84,13 +83,13 @@ namespace BigPara
                  MessageBox.Show(hisseSiteAdi);
                  HtmlAgilityPack.HtmlDocument document = htmlHisse.Load("https://fintables.com/sirketler/BIMAS");
                 */
-                string hisseSiteAdi = "https://finance.yahoo.com/quote/" + hisseAdi +".IS?p=" + hisseAdi +".IS&.tsrc=fin-srch";
-                MessageBox.Show(hisseSiteAdi);
+                string hisseSiteAdi = "https://finance.yahoo.com/quote/" + hisseAdi + ".IS?p=" + hisseAdi + ".IS&.tsrc=fin-srch";
+                MessageBox.Show(hisseSiteAdi, "The Website URL");
                 HtmlAgilityPack.HtmlDocument document = htmlHisse.Load(hisseSiteAdi);
 
                 // XPath ifadelerini kullanarak
                 var hisseFiyatNode = document.DocumentNode.SelectSingleNode(hisseFiyatiXpath).InnerText;
-                MessageBox.Show(hisseFiyatNode);
+                MessageBox.Show(hisseFiyatNode, "The Stock Price");
 
                 // Elemanlarýn null olup olmadýðýný kontrol et
                 if (hisseFiyatNode != null)
@@ -109,8 +108,45 @@ namespace BigPara
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                MessageBox.Show($"Bir hata oluþtu: {ex.Message}");
+                if (hisseAdi == "")
+                {
+                    MessageBox.Show("You forgot to write the name of the stock!");
+                }
+                else {
+                    MessageBox.Show($"Bir hata oluþtu: {ex.Message}");
+                }                
             }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pinkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Pink;
+        }
+
+        private void orangeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Orange;
+        }
+
+        private void blackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Gray;
+        }
+
+        private void aboutMeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This proje created by insif0", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void euroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // I will make this code later.
         }
     }
 }
